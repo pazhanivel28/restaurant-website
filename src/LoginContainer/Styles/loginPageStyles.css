@@ -1,0 +1,22 @@
+.login_page{
+    display: flex; 
+    flex-direction: column;
+}
+
+.login_container{
+    padding:50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.login_button{
+    width: 50px;
+}
+
+.label_text{
+    padding: 5px;
+}
+
+.button_container{
+    padding:10px
+}

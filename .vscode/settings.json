@@ -1,0 +1,6 @@
+{
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": false,
+    "html.format.indentInnerHtml": true,
+    "html.format.indentHandlebars": true
+}

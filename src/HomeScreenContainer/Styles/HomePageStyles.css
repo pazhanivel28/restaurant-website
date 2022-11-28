@@ -1,0 +1,30 @@
+img{
+    height: 10px;
+    width: 10px;
+}
+.rest_card{
+    margin:10px;
+    height: 100px;
+    width: 200px;
+border-style: solid;
+}
+.bookmark_button{
+   padding-left: 160px;
+}
+.rest_name_remove_container{
+    display: flex;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: space-between;
+}
+.suggestion{
+  cursor: pointer;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.suggestion:hover{
+    background-color: grey;
+}
