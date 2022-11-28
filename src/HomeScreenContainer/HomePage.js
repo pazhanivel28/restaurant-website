@@ -1,8 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import {setData} from '../redux/Actions/actions'
+import {setData,updateBookMark,deleteRestaurant} from '../redux/Actions/actions'
 import EmptyBookmark from '../Images/EmptyBookmark.png'
-import BookMarked from '../Images/BookMarked.png'
 import './Styles/HomePageStyles.css'
     function HomePage()
     {  
@@ -13,8 +12,6 @@ import './Styles/HomePageStyles.css'
         // const [listRestaruants, setListRestaruants] = useState([]);
         const dispatch = useDispatch();
         const userData = useSelector((state) => state.addData.data);
-        console.log(userData);
-
       
         const fetchData = async () => {
           const response = await fetch(
@@ -29,8 +26,6 @@ import './Styles/HomePageStyles.css'
             fetchData().then((json) => setListItems(json));
         }, []);
 
-        // console.log(listItems)
-
         const onChangeHandler = (text) => {
             let matches = [];
             if (text.length > 0)
@@ -41,26 +36,29 @@ import './Styles/HomePageStyles.css'
                 })
             }
             setSuggestion(matches);
-            console.log(matches)
             setText(text)
         }
 
         const handleSuggestion = (sugg) => {
             setText(sugg.fields.Name);
-            let selectedRest = { ...sugg, bookMarked: false };
-            setRest(selectedRest);
+            setRest(sugg);
             setSuggestion([]);
-            console.log(selectedRest)
+         
         }
         const HandleAddRest = () => {
             dispatch(setData(rest));
             setRest({});
-            setText('');
+            setText('');  
 
         }
         
         const HandleBookMark = (rest) => {
-            console.log(rest)
+            dispatch(updateBookMark(rest));
+            
+        }
+
+        const RemoveRest = (rest) => {
+            dispatch(deleteRestaurant(rest))
         }
         return <div>
             <label>
@@ -68,25 +66,29 @@ import './Styles/HomePageStyles.css'
                 <input type='text' value={text} onChange={(e) => { onChangeHandler(e.target.value) }}></input>
               
             </label>  <button onClick={HandleAddRest}>ADD</button>
+            <div className='suggestion_Container'>
             {suggestion && suggestion.map((sug,i) => {
-           return  <div key={i} className='suggestion' onClick={()=>{handleSuggestion(sug)}}>{ sug.fields.Name}</div>
+                return  <div key={i} className='suggestion' onClick={()=>{handleSuggestion(sug)}}>{ sug.fields.Name}</div>
         })}
-        
+            </div>
+            <div className='rest_card_container'>
             {!!userData.length &&
                 
                 userData.map((rest) => {
                    return   <div key={rest.id} className='rest_card'>
                        <div className='bookmark_button' onClick={() => { HandleBookMark(rest) }}>  <button>
-                  {rest.bookMarked?  <img src={BookMarked} alt='bookmarked' ></img>:  <img src={EmptyBookmark} alt='empty' ></img>}
+             <img src={EmptyBookmark} alt='empty' ></img> Bookmark
                    </button></div>
                    <div className='rest_name_remove_container'>
-                           <div className='rest_name'> { rest.fields.Name}</div>
-                       <button className='remove_button'>Remove</button>
+                           <div className='rest_name'><h4> { rest.fields.Name}</h4></div>
+                       <button className='remove_button' onClick={()=>{RemoveRest(rest)}}>Remove</button>
                    </div>
    
                </div>
                })
           }
+            </div>
+          
           
     </div>
 }

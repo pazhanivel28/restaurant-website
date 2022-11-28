@@ -25,7 +25,7 @@ function LoginPage() {
     const handleLogin = () => {
         fetchData().then((json) => setListItems(json));
     }
-    console.log(listItems)
+    
     return (
     <div className='login_container' > Login
         <div className="login_page">

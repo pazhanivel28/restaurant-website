@@ -5,17 +5,19 @@ img{
 .rest_card{
     margin:10px;
     height: 100px;
-    width: 200px;
+    width: 300px;
 border-style: solid;
 }
 .bookmark_button{
-   padding-left: 160px;
+   padding-left: 210px;
 }
 .rest_name_remove_container{
     display: flex;
-    padding-top: 20px;
+    flex-direction: row;
+    padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
+    align-items: center;
     justify-content: space-between;
 }
 .suggestion{
@@ -27,4 +29,21 @@ border-style: solid;
 }
 .suggestion:hover{
     background-color: grey;
+}
+.suggestion_Container{
+    max-height: 200px;
+overflow:auto;
+position: absolute;
+z-index: 1;
+background-color: azure;
+}
+.rest_card_container{
+    max-height: 350px;
+    overflow:auto;  
+}
+.remove_button{
+    height: 30px;
+}
+.rest_name{
+    width:200px ;
 }
