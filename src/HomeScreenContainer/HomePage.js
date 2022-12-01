@@ -88,8 +88,6 @@ import './Styles/HomePageStyles.css'
                })
           }
             </div>
-          
-          
-    </div>
+              </div>
 }
 export default HomePage;

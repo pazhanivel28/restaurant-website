@@ -7,10 +7,7 @@
     padding: 20px;
     margin: 0px;
     list-style: none;
-    background-color:bisque ;
-}
-.sidebarContainer{
-    padding:10px
+   
 }
 
 a{
@@ -20,3 +17,53 @@ a{
 .sideBarList{
     padding-top: 20px;
 }
+
+.sidebarContainer {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    border: #555;
+  }
+  
+  .sidebarContainer a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+   
+  .sidebarContainer a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  .sidebarContainer a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+  .rest_content{
+    margin-left: 200px;
+    padding: 1px 16px;
+    padding-top: 10px;
+  }
+  .logout_container{
+    padding:10px;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: beige;
+  }
+  .rest_header{
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+  }
+  button{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }

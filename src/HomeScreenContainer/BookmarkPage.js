@@ -1,16 +1,20 @@
 import React from "react";
 import { useSelector,useDispatch } from "react-redux";
-import { deleteRestaurant } from "../redux/Actions/actions";
+import { deleteRestaurantBookmark } from "../redux/Actions/actions";
 
 function BookmarkPage()
 {
     const dispatch = useDispatch();
     const userData = useSelector((state) => state.addData.bookmarkData);
     const RemoveRest = (rest) => {
-        dispatch(deleteRestaurant(rest))
+        dispatch(deleteRestaurantBookmark(rest))
+
     }
     return (
         <div>
+           Bookmarked Restaruants
+        
+            <div>
             {!!userData.length &&
                 userData.map((rest) => {
                     return <div key={rest.id} className='rest_card'>
@@ -22,6 +26,10 @@ function BookmarkPage()
                     </div>
                 })
             }
+            </div>
+            <div>
+            <embed width="600" height="450" src="https://datastudio.google.com/embed/reporting/430242fa-4162-4950-a984-824b3b355b3c/page/dQMwC" ></embed>
+            </div>
         </div>);
 }
 export default BookmarkPage;

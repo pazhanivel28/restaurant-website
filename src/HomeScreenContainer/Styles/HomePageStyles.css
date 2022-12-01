@@ -9,12 +9,12 @@ img{
 border-style: solid;
 }
 .bookmark_button{
-   padding-left: 210px;
+display: flex;
+flex-direction: row-reverse;
 }
 .rest_name_remove_container{
     display: flex;
     flex-direction: row;
-    padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
     align-items: center;
