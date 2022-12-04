@@ -30,7 +30,7 @@ function HomeScreenContainer() {
 
     return (<div>
            <div >
-        <div className="rest_name">Restaruants</div>
+        <div className="rest_header">Restaruants</div>
        </div>
        <div className="logout_container">
        <button onClick={HandleLogout}>Logout</button>

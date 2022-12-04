@@ -9,8 +9,8 @@ import './Styles/HomePageStyles.css'
         const [text, setText] = useState(' ');
         const [suggestion, setSuggestion] = useState([]);
         const [rest, setRest] = useState({});
-        // const [listRestaruants, setListRestaruants] = useState([]);
         const dispatch = useDispatch();
+        const [addBtnDisable, setAddBtnDisable] = useState(false);
         const userData = useSelector((state) => state.addData.data);
       
         const fetchData = async () => {
@@ -40,6 +40,7 @@ import './Styles/HomePageStyles.css'
         }
 
         const handleSuggestion = (sugg) => {
+            setAddBtnDisable(true);
             setText(sugg.fields.Name);
             setRest(sugg);
             setSuggestion([]);
@@ -49,6 +50,7 @@ import './Styles/HomePageStyles.css'
             dispatch(setData(rest));
             setRest({});
             setText('');  
+            setAddBtnDisable(false)
 
         }
         
@@ -65,7 +67,7 @@ import './Styles/HomePageStyles.css'
             Search
                 <input type='text' value={text} onChange={(e) => { onChangeHandler(e.target.value) }}></input>
               
-            </label>  <button onClick={HandleAddRest}>ADD</button>
+            </label>  <button onClick={HandleAddRest} disabled={!addBtnDisable}>ADD</button>
             <div className='suggestion_Container'>
             {suggestion && suggestion.map((sug,i) => {
                 return  <div key={i} className='suggestion' onClick={()=>{handleSuggestion(sug)}}>{ sug.fields.Name}</div>
@@ -79,9 +81,14 @@ import './Styles/HomePageStyles.css'
                        <div className='bookmark_button' onClick={() => { HandleBookMark(rest) }}>  <button>
              <img src={EmptyBookmark} alt='empty' ></img> Bookmark
                    </button></div>
-                   <div className='rest_name_remove_container'>
-                           <div className='rest_name'><h4> { rest.fields.Name}</h4></div>
-                       <button className='remove_button' onClick={()=>{RemoveRest(rest)}}>Remove</button>
+                       <div className='rest_name_remove_container'>
+                           <div className='rest_name_delete'>
+                               <div className='rest_name'><h4> {rest.fields.Name}</h4></div>
+                               <button className='remove_button' onClick={()=>{RemoveRest(rest)}}>Remove</button>
+                           </div>
+                       
+                           <embed width="600" height="450" src={`https://datastudio.google.com/embed/reporting/430242fa-4162-4950-a984-824b3b355b3c/page/dQMwC?params={"ds2.name2":"${rest.fields.Name}"}`} ></embed>
+                     
                    </div>
    
                </div>

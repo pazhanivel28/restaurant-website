@@ -12,7 +12,9 @@ function LoginPage() {
         userName:'',password:''
     }
     const [userData, setUserData] = useState(init);
+    const [loginError, setLoginError] = useState(false);
     const login = useSelector((state) => state.addData.loginState);
+    const loginButtonDisabled = userData.userName.length && userData.password.length;
     const dispatch = useDispatch();
     const history = useHistory();
         const fetchData = async () => {
@@ -37,6 +39,9 @@ function LoginPage() {
             })) {
                 dispatch(setLogin());
             }
+            else {
+                setLoginError(true);
+            }
         }        
         );
       
@@ -52,7 +57,6 @@ function LoginPage() {
     return (
         <div className='login_container' >
             <div className='login_box'>
-     <div>  Login</div>
         <div className="login_page">
                 <label className='label_text'>
                     Username :
@@ -65,8 +69,10 @@ function LoginPage() {
                     <input type='password' name='password' value={userData.password } onChange={handleInput}/>
          
                 </label>
-                <div className='button_container'>
-                <button className='login_button' onClick={handleLogin}>Login</button>
+                    <div className='button_container'>{
+                        loginError&&<div className='error_message'>Your username and password is incorrect<br/> Please try again.</div>
+                }
+                <button className='login_button' onClick={handleLogin} disabled={!loginButtonDisabled}>LOGIN</button>
                 </div>
         </div>
         </div>

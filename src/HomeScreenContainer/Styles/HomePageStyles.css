@@ -3,22 +3,20 @@ img{
     width: 10px;
 }
 .rest_card{
-    margin:10px;
-    height: 100px;
-    width: 300px;
+    margin:12px;
+    width: 620px;
 border-style: solid;
 }
 .bookmark_button{
+    padding: 2px;
 display: flex;
 flex-direction: row-reverse;
 }
 .rest_name_remove_container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding-left: 10px;
     padding-right: 10px;
-    align-items: center;
-    justify-content: space-between;
 }
 .suggestion{
   cursor: pointer;
@@ -31,19 +29,25 @@ flex-direction: row-reverse;
     background-color: grey;
 }
 .suggestion_Container{
-    max-height: 200px;
+ max-height: 200px;
 overflow:auto;
 position: absolute;
 z-index: 1;
 background-color: azure;
 }
 .rest_card_container{
-    max-height: 350px;
+    position: fixed;
+    height: 80%;width: 100%;
     overflow:auto;  
 }
 .remove_button{
     height: 30px;
 }
 .rest_name{
-    width:200px ;
+   padding-left:30px
+}
+.rest_name_delete{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

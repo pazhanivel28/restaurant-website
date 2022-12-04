@@ -8,12 +8,14 @@ const initialState = {
 export const dataReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case actionType.SET_DATA:
-      const addData = [...state.data, payload];
+      const oldData = state.data.filter((values) => values.id !== payload.id);
+      const addData = [...oldData, payload];
       return { ...state, data: addData };
     
     case actionType.UPDATE_BOOKMARK:
       const remainData = state.data.filter((values) => values.id !== payload.id);
-      const bookedData = [...state.bookmarkData, payload];
+      const oldBookmark = state.bookmarkData.filter((values) => values.id !== payload.id);
+      const bookedData = [...oldBookmark, payload];
       return { ...state, data: remainData, bookmarkData: bookedData };
     
     case actionType.DELETE_RESTAURANT:
